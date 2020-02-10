@@ -5,23 +5,29 @@ class UsersController < ApplicationController
     render json: users
   end
 
-  def login
-    user = User.find_or_create_by(email: params[:email], password: params[:password])
+  def new
+    user = User.new
+  end
+
+  def create
+    # user = User.find_or_create_by(email: user_params[:email], password: user_params[:password])
+    user = User.find_or_create_by(email: user_params[:email])
+    user.update_attributes(user_params)
 
     render json: user
   end
 
   def update
-    user = User.find(params[:id])
+    user = User.find(user_params[:id])
     user.update(user_params)
 
     render json: user
-  
+  end
 
   private
 
   def user_params
-    params.permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 
 end
