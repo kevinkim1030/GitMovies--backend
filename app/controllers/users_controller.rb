@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_or_create_by(email: params[:email], password: params[:password])
-
     render json: user
   end
 
@@ -23,6 +22,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:email, :password)
-  end
-
+  endgit
 end
