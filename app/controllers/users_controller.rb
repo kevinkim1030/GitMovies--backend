@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = User.find_or_create_by(name: params[:name], tier: params[:tier])
+    user = User.find_or_create_by(email: params[:email], password: params[:password])
 
     render json: user
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :tier)
+    params.permit(:email, :password)
   end
 
 end
