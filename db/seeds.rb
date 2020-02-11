@@ -9,8 +9,8 @@ User.destroy_all
 Movie.destroy_all
 Review.destroy_all
 
-# user1 = User.create(name: "Kevin", tier: "Movie Fanatic")
-# user2 = User.create(name: "Natalie", tier: "Movie Fanatic")
+user1 = User.create(email: "kevin.kim1030@gmail.com", password: 123)
+user2 = User.create(email: "nat.galligan@gmail.com", password: 123)
 
 # movie1 = Movie.create(name: "Terminator", year: 2090, description: "so much action", rating: "G", image: "some image")
 # movie2 = Movie.create(name: "Terminator 2", year: 1090, description: "so little action", rating: "PG", image: "some image")

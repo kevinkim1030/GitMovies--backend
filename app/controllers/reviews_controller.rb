@@ -10,8 +10,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.find_or_create_by(text: review_params[:text], user_id: review_params[:user_id], movie_id: review_params[:movie_id])
-
+    # byebug
+    movie = Movie.find_or_create_by(name: review_params[1]["original_title"], year: review_params[1]["release_date"].slice(0,4), description: review_params[1]["overview"], rating: review_params[1]["vote_average"], image: "https://image.tmdb.org/t/p/w500#{review_params[1]["poster_path"]}")
+    review = Review.create(text: review_params[0]["text"], user_id: review_params[0]["user_id"], movie_id: movie.id)
+    # review.update_attributes(review_params)
     render json: review
   end
 
@@ -30,7 +32,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:text, :user_id, :movie_id)
+    params.require(:review)
   end
 
 end
