@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.find_or_create_by(email: user_params[:email])
-    user.update_attributes(user_params)
+    # user.update_attributes(user_params)
 
     render json: user
   end
@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     user.update(user_params)
 
     render json: user
+  end
+
+  def destroy
+    user.User.find(user_params[:id])
+    user.destroy
   end
 
   private
