@@ -5,6 +5,11 @@ class ReviewsController < ApplicationController
     render json: reviews
   end
 
+  def show
+    review = Review.find(params[:id])
+    render json: review
+  end
+
   def new
     review = Review.new
   end
@@ -24,7 +29,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(review_params[:id])
+    review = Review.find(params[:id])
     review.destroy
   end
 
