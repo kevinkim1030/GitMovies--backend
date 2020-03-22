@@ -23,8 +23,8 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(review_params[:id])
-    review.update(review_params)
+    review = Review.find(params[:id])
+    review.update!(review_params)
     render json: review
   end
 
